@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Broadcast</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: whitesmoke;
+            font-family: 'Rubik Gemstones', cursive;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .box {
+            position: relative;
+            height: 400px;
+            width: 350px;
+            border: 0px solid transparent;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 30px;
+            background-image: url(images/background.jpg);
+            background-position: center;
+            background-size: cover;
+            box-shadow: 3px 3px 5px black;
+        }
+
+        .form_box {
+            border: 2px solid black;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 30px;
+            width: 300px;
+            background-color: black;
+            box-shadow: 3px 3px 5px black;
+        }
+
+        .search {
+            border: 1px solid black;
+            border-radius: 30px;
+            height: 20px;
+            width: 230px;
+        }
+
+        .btn {
+            border: 1px solid black;
+            border-radius: 30px;
+            height: 20px;
+            width: 55px;
+        }
+
+        .btn:hover {
+            transform: scale(1.1, 1.1);
+            transition: .3s;
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+        }
+
+        p {
+            position: absolute;
+            bottom: 0%;
+            left: 20%;
+            text-shadow: 1px 1px 1px white;
+            font-weight: bolder;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <form class="form_box" action="/" method="post">
+            <input class="search" type="text" name="cname" placeholder="City name.." required autocapitalize="on"
+              autocomplete="off">
+            <button class="btn" type="submit">Go!!</button>
+        </form>
+        <%if(name===""){%>
+            <div class="box" style="background-image:url(images/background.jpg)">
+        <%}%>
+        <%if(Temp<=0){%>
+            <div class="box" style="background-image:url(images/Snowy_day.jpg)">
+                <%}%>
+                    <%if(Temp>0 && Temp<=20) {%>
+                            <div class="box" style="background-image:url(images/normal_day.jpg)">
+                                <%}%>
+                                    <%if(Temp>20) {%>
+                                        <div class="box" style="background-image:url(images/Sunny_day.jpg)">
+                                            <%}%>
+
+                                                <h2>City Name: <span id="c">
+                                                        <%= name %>
+                                                    </span></h2>
+                                                <h2>Temperature: <span id="c">
+                                                        <%= Temp %>
+                                                    </span></h2>
+                                                <h2>Pressure: <span id="c">
+                                                        <%= Press %>
+                                                    </span></h2>
+                                                <h2>Humidity: <span id="c">
+                                                        <%= Humid %>
+                                                    </span></h2>
+                                                <h2>Description: <span id="c">
+                                                        <%= desc %>
+                                                    </span></h2>
+                                                <p id="demo">Date:<%=date%>
+                                                </p>
+                                        </div>
+                            </div>
+
+                            <script src="app.js"></script>
+</body>
+
+</html>
